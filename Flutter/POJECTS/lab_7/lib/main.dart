@@ -6,15 +6,18 @@ import 'package:lab_7/extra_pattern_4.dart';
 import 'package:lab_7/extra_pattern_5.dart';
 import 'package:lab_7/lab_7p3.dart';
 import 'package:lab_7/lab_7p4.dart';
-void main(){
+import 'package:lab_7/pattern_image.dart';
+
+void main() {
   runApp(MyApp());
 }
-class MyApp extends StatelessWidget{
+
+class MyApp extends StatelessWidget {
   // const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Pattern4(),
+      home: ImagePattern(),
     );
   }
 }
