@@ -2,7 +2,6 @@
 negative odd numbers from a set of numbers. You can enter 0 (zero) to quit the program and 
 thus it displays the result.*/
 
-
 import 'dart:io';
 
 void main(List<String> args) {
@@ -22,6 +21,6 @@ void main(List<String> args) {
       }
     }
   }
-  print("Sum OF Even Positive number is $sumposeven");
-  print("Sum OF Odd Negative number is $sumoddneg");
+  print("Sum OF Even Positive number is $evenSum");
+  print("Sum OF Odd Negative number is $oddSum");
 }

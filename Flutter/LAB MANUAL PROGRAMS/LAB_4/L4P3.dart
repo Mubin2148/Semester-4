@@ -12,12 +12,13 @@ void fibonacci(n) {
   List<int> list = [];
   list.add(0);
   list.add(1);
-  stdout.write("${list[0]},");
-  stdout.write("${list[1]},");
 
   for (int i = 2; i < n; i++) {
     int value = list[i - 1] + list[i - 2];
     list.add(value);
-    stdout.write("${list[i]},");
+  }
+
+  for (int i = 0; i < n; i++) {
+    stdout.write("${list[i]} ");
   }
 }

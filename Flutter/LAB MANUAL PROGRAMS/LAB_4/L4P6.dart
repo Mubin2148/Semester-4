@@ -13,7 +13,7 @@ void main() {
   int odd = 0;
   int even = 0;
   for (int i = 0; i < array_list.length; i++) {
-    if (array_list[i] % 2 == 0) {
+    if (array_list[i].isEven) {
       even++;
     } else {
       odd++;
