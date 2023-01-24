@@ -21,6 +21,6 @@ void main(List<String> args) {
       }
     }
   }
-  print("Sum OF Even Positive number is $evenSum");
-  print("Sum OF Odd Negative number is $oddSum");
+  print("Sum Of Even Positive number is $evenSum");
+  print("Sum Of Odd Negative number is $oddSum");
 }
