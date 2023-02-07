@@ -7,7 +7,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF444444),
+      backgroundColor: Color.fromRGBO(17, 20, 39, 1),
       body: Column(
         children: [
           Container(
@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
             child: TextField(
               decoration: InputDecoration(
                 filled: true,
-                fillColor: Color(0xFF9ea5b0),
+                fillColor: Colors.grey,
                 prefixIcon: Icon(Icons.search, color: Colors.white),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(
@@ -38,11 +38,11 @@ class HomePage extends StatelessWidget {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(15),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
+                  padding: EdgeInsets.fromLTRB(15, 15, 0, 0),
                   child: Text(
                     "New Albums",
                     style: TextStyle(
@@ -50,6 +50,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 Container(
+                  padding: EdgeInsets.fromLTRB(0, 15, 15, 0),
                   child: Text(
                     "View all",
                     style: TextStyle(
@@ -58,92 +59,46 @@ class HomePage extends StatelessWidget {
                 )
               ],
             ),
-          )
-
-          // Expanded(
-          //   child: ListView(
-          //     children: [
-          //       Container(
-          //         height: 100,
-          //         width: 100,
-          //         color: Colors.red,
-          //       ),
-          //       Container(
-          //         height: 100,
-          //         width: 100,
-          //         color: Colors.green,
-          //       ),
-          //       Container(
-          //         height: 100,
-          //         width: 100,
-          //         color: Colors.blue,
-          //       ),
-          //       Container(
-          //         height: 100,
-          //         width: 100,
-          //         color: Colors.red,
-          //       ),
-          //       Container(
-          //         height: 100,
-          //         width: 100,
-          //         color: Colors.green,
-          //       ),
-          //       Container(
-          //         height: 100,
-          //         width: 100,
-          //         color: Colors.blue,
-          //       ), Container(
-          //         height: 100,
-          //         width: 100,
-          //         color: Colors.red,
-          //       ),
-          //       Container(
-          //         height: 100,
-          //         width: 100,
-          //         color: Colors.green,
-          //       ),
-          //       Container(
-          //         height: 100,
-          //         width: 100,
-          //         color: Colors.blue,
-          //       ),
-          //     ],
-          //   ),
-          // ),
-          ,
-          ListView(
-            children: [
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  // scrollDirection: Axis.horizontal,
-                  children: [
-                    albumContainer("assets/images/peli.jpg", "text", 7),
-                    albumContainer("assets/images/peli.jpg", "text", 7),
-                    albumContainer("assets/images/peli.jpg", "text", 7),
-                    albumContainer("assets/images/peli.jpg", "text", 7),
-                    albumContainer("assets/images/peli.jpg", "text", 7),
-                    albumContainer("assets/images/peli.jpg", "text", 7),
-                    albumContainer("assets/images/peli.jpg", "text", 7),
-                    albumContainer("assets/images/peli.jpg", "text", 7),
-                    albumContainer("assets/images/peli.jpg", "text", 7),
-                    albumContainer("assets/images/peli.jpg", "text", 7),
-                  ],
-                ),
-              ),
-            ],
           ),
-          Container(
-            color: Colors.red,height: 50,width: 50,
-          )
+          Expanded(
+            child: ListView(
+              children: [
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      albumContainer("assets/images/peli.jpg", "text", 7),
+                      albumContainer("assets/images/second.jpg", "text", 7),
+                      albumContainer("assets/images/third.jpg", "text", 7),
+                      albumContainer("assets/images/fourth.jpg", "text", 7),
+                      albumContainer("assets/images/fifth.jpg", "text", 7),
+                      albumContainer("assets/images/sixth.jpg", "text", 7),
+                      albumContainer("assets/images/seventh.jpg", "text", 7),
+                      albumContainer("assets/images/eightth.jpg", "text", 7),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "Recently Music",
+                    style: TextStyle(
+                        color: Colors.white, fontSize: 25, fontFamily: "Kanit"),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         selectedItemColor: Colors.red,
-        backgroundColor: Colors.grey,
+        unselectedItemColor: Color.fromRGBO(44, 49, 69, 1),
+        backgroundColor: Color.fromRGBO(26, 31, 60, 1),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
+            icon: Icon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
@@ -156,12 +111,12 @@ class HomePage extends StatelessWidget {
             label: 'Trend',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            label: 'Home',
+            icon: Icon(Icons.chat),
+            label: 'Chat',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            label: 'Home',
+            icon: Icon(Icons.account_circle),
+            label: 'Profile',
           ),
         ],
       ),
@@ -170,14 +125,24 @@ class HomePage extends StatelessWidget {
 }
 
 Widget albumContainer(imgPath, text, n) {
-  return Container(
-    margin: EdgeInsets.all(5),
-    child: Image.asset(imgPath),
-    height: 75,
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(5),
-      color: Colors.red,
+  return Stack(children: [
+    Container(
+      margin: EdgeInsets.all(5),
+      child: Image.asset(imgPath),
+      height: 75,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(5), color: Colors.white),
+      width: 100,
     ),
-    width: 100,
+  ]);
+}
+
+Widget recentMusic(imgPath, text, n) {
+  return Row(
+    children: [
+      Text(n),
+      Image.asset(imgPath),
+      Text(text)
+    ],
   );
 }
