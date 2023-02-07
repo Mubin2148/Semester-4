@@ -20,20 +20,49 @@ class HomePage extends StatelessWidget {
                   fontFamily: "Kanit",
                 ),
               ),
-              margin: EdgeInsets.fromLTRB(10, 27, 0, 15)),
-          TextField(
-            decoration: InputDecoration(
-              filled: true,
-              fillColor: Colors.grey,
-              prefixIcon: Icon(Icons.search, color: Colors.white),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(10),
+              margin: EdgeInsets.fromLTRB(13, 23, 0, 15)),
+          Container(
+            margin: EdgeInsets.fromLTRB(13, 0, 13, 0),
+            child: TextField(
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: Color(0xFF9ea5b0),
+                prefixIcon: Icon(Icons.search, color: Colors.white),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(10),
+                  ),
                 ),
+                hintText: ' Search',
               ),
-              hintText: ' Search',
             ),
           ),
+          Row(
+            children: [
+              Container(
+                margin: EdgeInsets.fromLTRB(13, 11, 0, 5),
+                child: Text(
+                  "New Albums",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontFamily: "Kanit"
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.fromLTRB(830, 11, 7, 5),
+                child: Text(
+                  "View all",
+                  style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 14,
+                      fontFamily: "Kanit"
+                  ),
+                ),
+              )
+            ],
+          )
 
           // Expanded(
           //   child: ListView(
@@ -88,7 +117,7 @@ class HomePage extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-
+        selectedItemColor: Colors.red,
         backgroundColor: Colors.grey,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -112,7 +141,6 @@ class HomePage extends StatelessWidget {
             icon: Icon(Icons.home_outlined),
             label: 'Home',
           ),
-
         ],
       ),
     );
