@@ -37,31 +37,27 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-          Row(
-            children: [
-              Container(
-                margin: EdgeInsets.fromLTRB(13, 11, 0, 5),
-                child: Text(
-                  "New Albums",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontFamily: "Kanit"
+          Container(
+            padding: EdgeInsets.all(15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  child: Text(
+                    "New Albums",
+                    style: TextStyle(
+                        color: Colors.white, fontSize: 20, fontFamily: "Kanit"),
                   ),
                 ),
-              ),
-              Container(
-                margin: EdgeInsets.fromLTRB(830, 11, 7, 5),
-                child: Text(
-                  "View all",
-                  style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 14,
-                      fontFamily: "Kanit"
+                Container(
+                  child: Text(
+                    "View all",
+                    style: TextStyle(
+                        color: Colors.grey, fontSize: 14, fontFamily: "Kanit"),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           )
 
           // Expanded(
@@ -114,6 +110,32 @@ class HomePage extends StatelessWidget {
           //     ],
           //   ),
           // ),
+          ,
+          ListView(
+            children: [
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  // scrollDirection: Axis.horizontal,
+                  children: [
+                    albumContainer("assets/images/peli.jpg", "text", 7),
+                    albumContainer("assets/images/peli.jpg", "text", 7),
+                    albumContainer("assets/images/peli.jpg", "text", 7),
+                    albumContainer("assets/images/peli.jpg", "text", 7),
+                    albumContainer("assets/images/peli.jpg", "text", 7),
+                    albumContainer("assets/images/peli.jpg", "text", 7),
+                    albumContainer("assets/images/peli.jpg", "text", 7),
+                    albumContainer("assets/images/peli.jpg", "text", 7),
+                    albumContainer("assets/images/peli.jpg", "text", 7),
+                    albumContainer("assets/images/peli.jpg", "text", 7),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          Container(
+            color: Colors.red,height: 50,width: 50,
+          )
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -145,4 +167,17 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget albumContainer(imgPath, text, n) {
+  return Container(
+    margin: EdgeInsets.all(5),
+    child: Image.asset(imgPath),
+    height: 75,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(5),
+      color: Colors.red,
+    ),
+    width: 100,
+  );
 }
