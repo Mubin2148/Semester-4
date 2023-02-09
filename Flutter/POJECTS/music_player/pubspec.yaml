@@ -89,6 +89,9 @@ flutter:
       fonts:
         - asset: assets/fonts/Kanit-Regular.ttf
 
+    - family: Medium
+      fonts:
+        - asset: assets/fonts/Kanit-Regular.ttf
   #         style: italic
     - family: Bold
       fonts:
