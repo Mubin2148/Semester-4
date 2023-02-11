@@ -72,10 +72,10 @@ class HomePage extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
-                        albumContainer("assets/images/peli.jpg", "Blessed", 7),
-                        albumContainer("assets/images/second.jpg", "Rhino", 7),
-                        albumContainer("assets/images/third.jpg", "Good", 7),
-                        albumContainer("assets/images/fourth.jpg", "Excell", 7),
+                        albumContainer("assets/images/peli.jpg", " ", 7),
+                        albumContainer("assets/images/second.jpg", " ", 7),
+                        albumContainer("assets/images/third.jpg", " ", 7),
+                        albumContainer("assets/images/fourth.jpg", " ", 7),
                         albumContainer("assets/images/fifth.jpg", " ", 7),
                         albumContainer("assets/images/sixth.jpg", " ", 7),
                         albumContainer("assets/images/seventh.jpg", " ", 7),
@@ -118,36 +118,7 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          onTap: (value) => {},
-          type: BottomNavigationBarType.fixed,
-          selectedItemColor: Colors.red,
-          unselectedItemColor: Color.fromRGBO(44, 49, 69, 1),
-          backgroundColor: Color.fromRGBO(26, 31, 60, 1),
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.explore_outlined),
-              label: 'Explore',
-            ),
-            BottomNavigationBarItem(
-              backgroundColor: Colors.grey,
-              icon: Icon(Icons.area_chart),
-              label: 'Trend',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.chat),
-              label: 'Chat',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.account_circle),
-              label: 'Profile',
-            ),
-          ],
-        ),
+
       ),
     );
   }
