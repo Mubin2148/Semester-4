@@ -17,7 +17,7 @@ class _AllPageState extends State<AllPage> {
   List<Widget> widgetslist = const [
     HomePage(),
     ExplorePage(),
-    TrendPage(),
+    Playing(),
     ChatPage(),
     ProfilePage()
   ];

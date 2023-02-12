@@ -1,19 +1,3 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter/widgets.dart';
-//
-// class TrendPage extends StatelessWidget {
-//   const TrendPage({Key? key}) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return  SafeArea(
-//       child: Scaffold(
-//           appBar:AppBar(title: Text("Trend"),)
-//       ),
-//     );
-//   }
-// }
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -36,9 +20,9 @@ class _PlayingState extends State<Playing> {
           children: [
             Expanded(
                 child: Image.asset(
-                  "assets/images/music.jpg",
-                  fit: BoxFit.cover,
-                )),
+              "assets/images/music.jpg",
+              fit: BoxFit.cover,
+            )),
             Column(
               children: [
                 Container(
@@ -207,9 +191,9 @@ Widget recentMusic(imgPath, text1, text2, n) {
           margin: EdgeInsets.only(left: 3, right: 0),
           child: Center(
               child: Text(
-                n,
-                style: TextStyle(fontSize: 15, color: Colors.white70),
-              ))),
+            n,
+            style: TextStyle(fontSize: 15, color: Colors.white70),
+          ))),
       Expanded(
         child: ListTile(
           leading: Container(
@@ -241,4 +225,3 @@ Widget recentMusic(imgPath, text1, text2, n) {
     ],
   );
 }
-

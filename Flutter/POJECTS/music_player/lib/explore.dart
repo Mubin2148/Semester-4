@@ -88,23 +88,23 @@ Widget albumContainer(imgPath, text) {
       child: Container(
         margin: EdgeInsets.fromLTRB(8, 5, 2, 5),
         child: Container(
-          clipBehavior: Clip.antiAlias,
+          clipBehavior: Clip.antiAliasWithSaveLayer,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16)
+            borderRadius: BorderRadius.circular(20)
           ),
           child: Image.asset(
             imgPath,
           ),
         ),
-        height: 110,
+        height: 90,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5), color: Colors.transparent),
+            borderRadius: BorderRadius.circular(20), color: Colors.transparent),
         width: 150,
       ),
     ),
     Container(
         alignment: Alignment.bottomLeft,
-        margin: EdgeInsets.only(top: 85, bottom: 10, left: 30),
+        margin: EdgeInsets.only(top: 75, bottom: 10, left: 30),
         child: Center(
           child: Text(
             text,

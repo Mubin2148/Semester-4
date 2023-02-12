@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:music_player/music_playing.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -118,72 +119,86 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
-
       ),
     );
   }
 }
 
 Widget albumContainer(imgPath, text, n) {
-  return Stack(children: [
-    Container(
-      margin: EdgeInsets.all(5),
-      child: Image.asset(
-        imgPath,
+  return InkWell(
+    onTap: () => {
+      Navigator.push(BuildContext as BuildContext,
+          MaterialPageRoute(builder: (context) => Playing()))
+    },
+    child: Stack(children: [
+      Container(
+        margin: EdgeInsets.all(5),
+        child: Image.asset(
+          imgPath,
+        ),
+        height: 75,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5), color: Colors.white),
+        width: 100,
       ),
-      height: 75,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5), color: Colors.white),
-      width: 100,
-    ),
-    Container(
-        alignment: Alignment.bottomLeft,
-        margin: EdgeInsets.only(top: 50, bottom: 10, left: 20),
-        child: Center(
-          child: Text(
-            text,
-            style: TextStyle(
-                fontFamily: "Bold", fontSize: 12, color: Colors.white),
-          ),
-        ))
-  ]);
+      Container(
+          alignment: Alignment.bottomLeft,
+          margin: EdgeInsets.only(top: 50, bottom: 10, left: 20),
+          child: Center(
+            child: Text(
+              text,
+              style: TextStyle(
+                  fontFamily: "Bold", fontSize: 12, color: Colors.white),
+            ),
+          ))
+    ]),
+  );
 }
 
 Widget recentMusic(imgPath, text1, text2, n) {
-  return Row(
-    children: [
-      Container(
-          margin: EdgeInsets.only(left: 3,right: 0),
-          child: Center(
-              child: Text(
-            n,
-            style: TextStyle(fontSize: 15, color: Colors.white70),
-          ))),
-      Expanded(
-        child: ListTile(
-          leading: Container(
-            child: Image.asset(
-              imgPath,
-              height: 42,
-              width: 42,
+  return InkWell(
+    onTap: () => {
+      Navigator.push(BuildContext as BuildContext,
+          MaterialPageRoute(builder: (context) => Playing()))
+    },
+    child: Row(
+      children: [
+        Container(
+            margin: EdgeInsets.only(left: 3, right: 0),
+            child: Center(
+                child: Text(
+              n,
+              style: TextStyle(fontSize: 15, color: Colors.white70),
+            ))),
+        Expanded(
+          child: ListTile(
+            leading: Container(
+              child: Image.asset(
+                imgPath,
+                height: 42,
+                width: 42,
+              ),
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
             ),
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
+            title: Text(
+              text1,
+              style: TextStyle(color: Colors.white, fontFamily: "Medium"),
+            ),
+            subtitle: Text(
+              text2,
+              style: TextStyle(color: Colors.grey, fontSize: 11),
+            ),
+            onTap: () => {
+              Size.fromHeight(20),
+            },
+            trailing: Icon(
+              Icons.more_horiz,
+              color: Colors.white,
+            ),
+            // leading: CircleAvatar(backgroundImage: AssetImage('assets/images/Home/FastWorkout.png'),),
           ),
-          title: Text(
-            text1,
-            style: TextStyle(color: Colors.white, fontFamily: "Medium"),
-          ),
-          subtitle: Text(
-            text2,
-            style: TextStyle(color: Colors.grey, fontSize: 11),
-          ),
-          onTap: () => {
-            Size.fromHeight(20),
-          },
-          trailing: Icon(Icons.more_horiz,color: Colors.white,),
-          // leading: CircleAvatar(backgroundImage: AssetImage('assets/images/Home/FastWorkout.png'),),
         ),
-      ),
-    ],
+      ],
+    ),
   );
 }
