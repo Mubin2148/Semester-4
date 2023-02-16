@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:music_player/chat.dart';
 import 'package:music_player/explore.dart';
 import 'package:music_player/home_page.dart';
+import 'package:music_player/music_playing.dart';
 import 'package:music_player/profile.dart';
 import 'package:music_player/trend.dart';
 
@@ -17,9 +18,9 @@ class _AllPageState extends State<AllPage> {
   List<Widget> widgetslist = const [
     HomePage(),
     ExplorePage(),
-    Playing(),
+    TrendPage(),
     ChatPage(),
-    ProfilePage()
+    ProfilePage(),
   ];
 
   @override
@@ -32,7 +33,7 @@ class _AllPageState extends State<AllPage> {
           child: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             selectedItemColor: Colors.red,
-            unselectedItemColor: Color.fromRGBO(44, 49, 69, 1),
+            unselectedItemColor: Color.fromRGBO(106, 111, 131, 1),
             backgroundColor: Color.fromRGBO(26, 31, 60, 1),
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(

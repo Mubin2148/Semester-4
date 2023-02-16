@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:music_player/music_playing.dart';
 
 class HomePage extends StatelessWidget {
@@ -28,7 +27,7 @@ class HomePage extends StatelessWidget {
               child: TextField(
                 decoration: InputDecoration(
                   filled: true,
-                  fillColor: Colors.grey,
+                  fillColor: Colors.grey.shade700,
                   prefixIcon: Icon(Icons.search, color: Colors.white),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(
@@ -73,14 +72,17 @@ class HomePage extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
-                        albumContainer("assets/images/peli.jpg", " ", 7),
-                        albumContainer("assets/images/second.jpg", " ", 7),
-                        albumContainer("assets/images/third.jpg", " ", 7),
-                        albumContainer("assets/images/fourth.jpg", " ", 7),
-                        albumContainer("assets/images/fifth.jpg", " ", 7),
-                        albumContainer("assets/images/sixth.jpg", " ", 7),
-                        albumContainer("assets/images/seventh.jpg", " ", 7),
-                        albumContainer("assets/images/eightth.jpg", " ", 7),
+                        albumContainer("assets/images/peli.jpg",context),
+                        albumContainer("assets/images/second.jpg",context),
+                        albumContainer("assets/images/third.jpg",context),
+                        albumContainer("assets/images/fourth.jpg",context),
+                        albumContainer("assets/images/fifth.jpg",context),
+                        albumContainer("assets/images/sixth.jpg",context),
+                        albumContainer("assets/images/seventh.jpg",context),
+                        albumContainer("assets/images/eightth.jpg",context),
+                        albumContainer("assets/images/peli.jpg",context),
+                        albumContainer("assets/images/second.jpg",context),
+                        albumContainer("assets/images/fourth.jpg",context),
                       ],
                     ),
                   ),
@@ -95,25 +97,25 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   recentMusic("assets/images/fourth.jpg", "Havana",
-                      "Camilla Cabello", "01"),
+                      "Camilla Cabello", "01",context),
                   recentMusic("assets/images/eightth.jpg", "Techno Music",
-                      "Essentiel Mix", "02"),
+                      "Essentiel Mix", "02",context),
                   recentMusic("assets/images/sixth.jpg", "Stargrows",
-                      "ittile Iselands", "03"),
+                      "ittile Iselands", "03",context),
                   recentMusic(
-                      "assets/images/peli.jpg", "Orion", "Volta Music", "04"),
+                      "assets/images/peli.jpg", "Orion", "Volta Music", "04",context),
                   recentMusic("assets/images/third.jpg",
-                      "Everything is Blessed", "Emilla Dine", "05"),
+                      "Everything is Blessed", "Emilla Dine", "05",context),
                   recentMusic("assets/images/fifth.jpg", "Tukajo",
-                      "Redani Diana", "06"),
+                      "Redani Diana", "06",context),
                   recentMusic(
-                      "assets/images/second.jpg", "Cristiano", "Ronaldo", "07"),
+                      "assets/images/second.jpg", "Cristiano", "Ronaldo", "07",context),
                   recentMusic(
-                      "assets/images/seventh.jpg", "Seranvika", "Grapes", "08"),
+                      "assets/images/seventh.jpg", "Seranvika", "Grapes", "08",context),
                   recentMusic(
-                      "assets/images/fourth.jpg", "Dragons", "Fullilo", "09"),
+                      "assets/images/fourth.jpg", "Dragons", "Fullilo", "09",context),
                   recentMusic(
-                      "assets/images/sixth.jpg", "Hersiye", "lions", "10"),
+                      "assets/images/sixth.jpg", "Hersiye", "lions", "10",context),
                 ],
               ),
             ),
@@ -124,81 +126,66 @@ class HomePage extends StatelessWidget {
   }
 }
 
-Widget albumContainer(imgPath, text, n) {
+Widget albumContainer(imgPath,context) {
   return InkWell(
     onTap: () => {
-      Navigator.push(BuildContext as BuildContext,
-          MaterialPageRoute(builder: (context) => Playing()))
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => const Playing()))
     },
     child: Stack(children: [
       Container(
         margin: EdgeInsets.all(5),
         child: Image.asset(
           imgPath,
+          fit: BoxFit.cover,
         ),
-        height: 75,
+        clipBehavior: Clip.antiAlias,
+        height: 85,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5), color: Colors.white),
-        width: 100,
+            borderRadius: BorderRadius.circular(10), color: Colors.white),
+        width: 120,
       ),
-      Container(
-          alignment: Alignment.bottomLeft,
-          margin: EdgeInsets.only(top: 50, bottom: 10, left: 20),
-          child: Center(
-            child: Text(
-              text,
-              style: TextStyle(
-                  fontFamily: "Bold", fontSize: 12, color: Colors.white),
-            ),
-          ))
     ]),
   );
 }
 
-Widget recentMusic(imgPath, text1, text2, n) {
-  return InkWell(
-    onTap: () => {
-      Navigator.push(BuildContext as BuildContext,
-          MaterialPageRoute(builder: (context) => Playing()))
-    },
-    child: Row(
-      children: [
-        Container(
-            margin: EdgeInsets.only(left: 3, right: 0),
-            child: Center(
-                child: Text(
-              n,
-              style: TextStyle(fontSize: 15, color: Colors.white70),
-            ))),
-        Expanded(
-          child: ListTile(
-            leading: Container(
-              child: Image.asset(
-                imgPath,
-                height: 42,
-                width: 42,
-              ),
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
+Widget recentMusic(imgPath, text1, text2, n,context) {
+  return Row(
+    children: [
+      Container(
+          margin: EdgeInsets.only(left: 3, right: 0),
+          child: Center(
+              child: Text(
+            n,
+            style: TextStyle(fontSize: 15, color: Colors.white70),
+          ))),
+      Expanded(
+        child: ListTile(
+          leading: Container(
+            child: Image.asset(
+              imgPath,
+              height: 42,
+              width: 42,
             ),
-            title: Text(
-              text1,
-              style: TextStyle(color: Colors.white, fontFamily: "Medium"),
-            ),
-            subtitle: Text(
-              text2,
-              style: TextStyle(color: Colors.grey, fontSize: 11),
-            ),
-            onTap: () => {
-              Size.fromHeight(20),
-            },
-            trailing: Icon(
-              Icons.more_horiz,
-              color: Colors.white,
-            ),
-            // leading: CircleAvatar(backgroundImage: AssetImage('assets/images/Home/FastWorkout.png'),),
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
+          ),
+          title: Text(
+            text1,
+            style: TextStyle(color: Colors.white, fontFamily: "Medium"),
+          ),
+          subtitle: Text(
+            text2,
+            style: TextStyle(color: Colors.grey, fontSize: 11),
+          ),
+          onTap: () => {
+            Size.fromHeight(20),
+          },
+          trailing: Icon(
+            Icons.more_horiz,
+            color: Colors.white,
           ),
         ),
-      ],
-    ),
+      ),
+    ],
   );
 }

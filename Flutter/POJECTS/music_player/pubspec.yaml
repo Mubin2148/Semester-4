@@ -32,6 +32,7 @@ dependencies:
   flutter:
     sdk: flutter
   font_awesome_flutter: ^10.4.0
+  smooth_page_indicator: ^1.0.0+2
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -63,15 +64,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   # assets:
   assets:
-    - assets/images/peli.jpg
-    - assets/images/second.jpg
-    - assets/images/third.jpg
-    - assets/images/fourth.jpg
-    - assets/images/fifth.jpg
-    - assets/images/sixth.jpg
-    - assets/images/seventh.jpg
-    - assets/images/eightth.jpg
-    - assets/images/music.jpg
+    - assets/images/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

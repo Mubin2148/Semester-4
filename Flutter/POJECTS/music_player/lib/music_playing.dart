@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:music_player/all_page.dart';
 
 class Playing extends StatefulWidget {
   const Playing({Key? key}) : super(key: key);
@@ -11,6 +12,7 @@ class Playing extends StatefulWidget {
 
 class _PlayingState extends State<Playing> {
   double _currentSliderValue = 60;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -29,7 +31,15 @@ class _PlayingState extends State<Playing> {
                   margin: EdgeInsets.only(top: 14, left: 6),
                   child: Row(
                     children: [
-                      Icon(Icons.arrow_back, color: Colors.white),
+                      InkWell(
+                          onTap: () => {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => AllPage(),
+                                    )),
+                              },
+                          child: Icon(Icons.arrow_back, color: Colors.white)),
                       Container(
                         margin: EdgeInsets.only(left: 220),
                         child: Icon(
@@ -85,7 +95,7 @@ class _PlayingState extends State<Playing> {
                             color: Colors.white, size: 30),
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 47),
+                        margin: EdgeInsets.only(left: 42),
                         child: Icon(Icons.repeat_rounded,
                             color: Colors.white, size: 30),
                       )
@@ -122,7 +132,6 @@ class _PlayingState extends State<Playing> {
                 ),
                 Container(
                   child: Slider(
-
                     activeColor: Colors.red,
                     value: _currentSliderValue,
                     max: 100,
