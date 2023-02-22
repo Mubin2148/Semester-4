@@ -1,5 +1,3 @@
-//Fibonacci series
-
 echo "Enter no of terms you want of the fibonacci series:"
 read n
 echo "The series is:"
