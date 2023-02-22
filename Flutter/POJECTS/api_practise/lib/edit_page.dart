@@ -1,21 +1,18 @@
 import 'dart:convert';
-
-import 'package:api_practise/user_detail_page.dart';
+import 'package:api_practise/detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-
-
-
-class SignUpAndUpdatePage extends StatefulWidget {
-  SignUpAndUpdatePage({Key? key, this.userModel}) : super(key: key);
+class EditPage extends StatefulWidget {
+  EditPage({Key? key, this.userModel}) : super(key: key);
   dynamic userModel;
 
   @override
-  State<SignUpAndUpdatePage> createState() => _SignUpAndUpdatePageState();
+  State<EditPage> createState() => _EditPageState();
+
 }
 
-class _SignUpAndUpdatePageState extends State<SignUpAndUpdatePage> {
+class _EditPageState extends State<EditPage> {
   var id;
 
   void initState() {
@@ -28,22 +25,23 @@ class _SignUpAndUpdatePageState extends State<SignUpAndUpdatePage> {
             : "");
     imageController = TextEditingController(
         text: widget.userModel != null
-            ? widget.userModel["avatar"].toString()
+            ? widget.userModel["picture"].toString()
             : "");
-    birthdateController = TextEditingController(
+    emailController = TextEditingController(
         text: widget.userModel != null
-            ? widget.userModel["BirthDate"].toString()
+            ? widget.userModel["email"].toString()
             : "");
     cityController = TextEditingController(
         text: widget.userModel != null
             ? widget.userModel["city"].toString()
             : "");
-    jobController = TextEditingController(
-        text:
-        widget.userModel != null ? widget.userModel["job"].toString() : "");
+    pincodeController = TextEditingController(
+        text: widget.userModel != null
+            ? widget.userModel["pincode"].toString()
+            : "");
     phoneNumberController = TextEditingController(
         text: widget.userModel != null
-            ? widget.userModel["phoneNumber"].toString()
+            ? widget.userModel["ContactNumbar"].toString()
             : "");
   }
 
@@ -51,19 +49,15 @@ class _SignUpAndUpdatePageState extends State<SignUpAndUpdatePage> {
   final _formKey = GlobalKey<FormState>();
   TextEditingController nameController = TextEditingController();
   TextEditingController imageController = TextEditingController();
-  TextEditingController birthdateController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   TextEditingController cityController = TextEditingController();
-  TextEditingController jobController = TextEditingController();
+  TextEditingController pincodeController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
-  String genderController = "Male";
 
   Future<void> addInApi(Map<String, String> map) async {
     print(map);
     http.Response res = await http.post(
-      Uri.parse("https://630c662f53a833c53429c1c8.mockapi.io/users"),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
+      Uri.parse("https://630c645f83986f74a7bf23bb.mockapi.io/Faculties"),
       body: jsonEncode(map),
     );
   }
@@ -72,8 +66,8 @@ class _SignUpAndUpdatePageState extends State<SignUpAndUpdatePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Sign up"),
-        backgroundColor: Colors.deepOrangeAccent,
+        title: Text("Edit Detail"),
+        backgroundColor: Colors.blue,
       ),
       body: Container(
         padding: EdgeInsets.all(5),
@@ -116,10 +110,9 @@ class _SignUpAndUpdatePageState extends State<SignUpAndUpdatePage> {
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 5),
                   child: TextFormField(
-                    controller: birthdateController,
+                    controller: emailController,
                     decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: "Enter BirthDate"),
+                        border: OutlineInputBorder(), labelText: "Enter email"),
                     validator: (value) {
                       var passNonNullValue = value ?? "";
                       if (passNonNullValue.isEmpty) {
@@ -145,9 +138,10 @@ class _SignUpAndUpdatePageState extends State<SignUpAndUpdatePage> {
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 5),
                   child: TextFormField(
-                    controller: jobController,
+                    controller: pincodeController,
                     decoration: const InputDecoration(
-                        border: OutlineInputBorder(), labelText: "Enter job"),
+                        border: OutlineInputBorder(),
+                        labelText: "Enter pincode"),
                     validator: (value) {
                       var passNonNullValue = value ?? "";
                       if (passNonNullValue.isEmpty) {
@@ -171,7 +165,6 @@ class _SignUpAndUpdatePageState extends State<SignUpAndUpdatePage> {
                     },
                   ),
                 ),
-
                 Container(
                   margin: EdgeInsets.only(top: 150),
                   child: TextButton(
@@ -198,33 +191,31 @@ class _SignUpAndUpdatePageState extends State<SignUpAndUpdatePage> {
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
                                 map["name"] = nameController.text.toString();
-                                map["avatar"] = imageController.text.toString();
-                                map["BirthDate"] =
-                                    birthdateController.text.toString();
+                                map["picture"] =
+                                    imageController.text.toString();
+                                map["email"] = emailController.text.toString();
                                 map["city"] = cityController.text.toString();
                                 map["phoneNumber"] =
                                     phoneNumberController.text.toString();
-                                map["gender"] = genderController.toString();
-                                map["job"] = jobController.text.toString();
+                                map["pincode"] =
+                                    pincodeController.text.toString();
                                 if (widget.userModel == null) {
                                   addInApi(map);
                                 } else {
-                                  print(id);
                                   updateInApi(
                                     map,
                                     id: id.toString(),
                                   );
                                 }
-                                // print(map);
                                 Navigator.of(context)
                                   ..pop()
                                   ..pop()
                                   ..pushReplacement(
                                     MaterialPageRoute<void>(
                                       builder: (BuildContext context) =>
-                                          UserDetailsPage(
-                                            map: map,
-                                          ),
+                                          DetailsPage(
+                                        map: map,
+                                      ),
                                     ),
                                   );
                               }
@@ -236,7 +227,7 @@ class _SignUpAndUpdatePageState extends State<SignUpAndUpdatePage> {
                     ),
                     child: Text(
                       "Submit",
-                      style:TextStyle(color: Colors.white),
+                      style: TextStyle(color: Colors.white),
                     ),
                     style: TextButton.styleFrom(
                       shape: new RoundedRectangleBorder(
@@ -260,8 +251,8 @@ class _SignUpAndUpdatePageState extends State<SignUpAndUpdatePage> {
     map["id"] = id.toString();
     print(map);
     http.Response res = await http.put(
-      Uri.parse(
-          "https://630c662f53a833c53429c1c8.mockapi.io/users/" + id.toString()),
+      Uri.parse("https://630c645f83986f74a7bf23bb.mockapi.io/Faculties" +
+          id.toString()),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },

@@ -1,5 +1,6 @@
 import 'dart:convert';
-import 'package:api_practise/user_detail_page.dart';
+import 'package:api_practise/detail_page.dart';
+import 'package:api_practise/edit_page.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -29,7 +30,7 @@ class _GetAllState extends State<GetAll> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => UserDetailsPage(map: user),
+              builder: (context) => DetailsPage(map: user),
             ),
           );
         },
@@ -56,6 +57,19 @@ class _GetAllState extends State<GetAll> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 10,
+        leading: InkWell(
+          onTap:(){
+            Navigator.of(context)
+                .push(MaterialPageRoute(
+              builder: (context) => EditPage(),
+            ));
+          } ,
+          child: Container(
+            margin: EdgeInsets.only(left:980),
+            child: Icon(Icons.add),
+          ),
+        ),
         title: Text("Get All"),
         backgroundColor: Colors.blue,
       ),
