@@ -23,32 +23,36 @@ class _GetAllState extends State<GetAll> {
     List<Widget> list = [];
     for (int i = 0; i < lst.length; i++) {
       list.add(Card(
-        elevation: 7,
+          elevation: 7,
           child: InkWell(
-        onTap: () {
-          Map user = lst[i];
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => DetailsPage(map: user),
+            onTap: () {
+              Map user = lst[i];
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DetailsPage(map: user),
+                ),
+              );
+            },
+            child: ListTile(
+              leading: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(40),
+                ),
+                clipBehavior: Clip.antiAlias,
+                child: Image.network(lst[i]["picture"].toString()),
+              ),
+              trailing: Icon(
+                Icons.arrow_forward_ios,
+                color: Colors.grey.shade200,
+              ),
+
+              subtitle: Text(lst[i]["email"].toString()),
+              title: Text(
+                lst[i]["name"].toString(),
+              ),
             ),
-          );
-        },
-        child: ListTile(
-          leading: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            clipBehavior: Clip.antiAlias,
-            child: Image.network(lst[i]["picture"].toString()),
-          ),
-          subtitle: Text(lst[i]["email"].toString()),
-          trailing: Icon(Icons.arrow_forward_ios,color: Colors.grey.shade200,),
-          title: Text(
-            lst[i]["name"].toString(),
-          ),
-        ),
-      )));
+          )));
     }
     return list;
   }
@@ -58,18 +62,19 @@ class _GetAllState extends State<GetAll> {
     return Scaffold(
       appBar: AppBar(
         elevation: 10,
-        leading: InkWell(
-          onTap:(){
-            Navigator.of(context)
-                .push(MaterialPageRoute(
-              builder: (context) => EditPage(),
-            ));
-          } ,
-          child: Container(
-            margin: EdgeInsets.only(left:980),
-            child: Icon(Icons.add),
+        actions: [
+          InkWell(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => EditPage(),
+              ));
+            },
+            child: Container(
+              margin: EdgeInsets.only(right: 10),
+              child: Icon(Icons.add),
+            ),
           ),
-        ),
+        ],
         title: Text("Get All"),
         backgroundColor: Colors.blue,
       ),

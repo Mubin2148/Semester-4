@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:api_practise/detail_page.dart';
+import 'package:api_practise/get_all.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -9,7 +10,6 @@ class EditPage extends StatefulWidget {
 
   @override
   State<EditPage> createState() => _EditPageState();
-
 }
 
 class _EditPageState extends State<EditPage> {
@@ -55,9 +55,11 @@ class _EditPageState extends State<EditPage> {
   TextEditingController phoneNumberController = TextEditingController();
 
   Future<void> addInApi(Map<String, String> map) async {
-    print(map);
     http.Response res = await http.post(
       Uri.parse("https://630c645f83986f74a7bf23bb.mockapi.io/Faculties"),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
       body: jsonEncode(map),
     );
   }
@@ -201,23 +203,35 @@ class _EditPageState extends State<EditPage> {
                                     pincodeController.text.toString();
                                 if (widget.userModel == null) {
                                   addInApi(map);
+                                  Navigator.of(context)
+                                    ..pop()
+                                    ..pop()
+                                    ..pushReplacement(
+                                      MaterialPageRoute<void>(
+                                        builder: (BuildContext context) =>
+                                            GetAll(
+                                            ),
+                                      ),
+                                    );
+
                                 } else {
                                   updateInApi(
                                     map,
                                     id: id.toString(),
                                   );
-                                }
-                                Navigator.of(context)
-                                  ..pop()
-                                  ..pop()
-                                  ..pushReplacement(
-                                    MaterialPageRoute<void>(
-                                      builder: (BuildContext context) =>
-                                          DetailsPage(
-                                        map: map,
+                                  Navigator.of(context)
+                                    ..pop()
+                                    ..pop()
+                                    ..pushReplacement(
+                                      MaterialPageRoute<void>(
+                                        builder: (BuildContext context) =>
+                                            DetailsPage(
+                                              map: map,
+                                            ),
                                       ),
-                                    ),
-                                  );
+                                    );
+                                }
+
                               }
                             },
                             child: const Text('OK'),
@@ -247,12 +261,10 @@ class _EditPageState extends State<EditPage> {
   }
 
   Future<void> updateInApi(Map<String, String> map, {id}) async {
-    print(id.toString());
     map["id"] = id.toString();
     print(map);
     http.Response res = await http.put(
-      Uri.parse("https://630c645f83986f74a7bf23bb.mockapi.io/Faculties" +
-          id.toString()),
+      Uri.parse("https://630c645f83986f74a7bf23bb.mockapi.io/Faculties/$id"),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },

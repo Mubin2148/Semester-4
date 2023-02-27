@@ -193,30 +193,10 @@ class _DetailsPageState extends State<DetailsPage> {
                                     fontSize: 20, decorationThickness: 10),
                               ),
                             )
+
                           ],
                         ),
                       )
-                      // ListTile(
-                      //   title: Container(
-                      //     child: Text(
-                      //       "${widget.map["name"]}",
-                      //     ),
-                      //   ),
-                      //   subtitle: Text(
-                      //     "${widget.map["city"]}",
-                      //     style: TextStyle(color: Colors.black26),
-                      //   ),
-                      // ),
-                      // Container(
-                      //   padding: EdgeInsets.only(left: 15),
-                      //   child: Column(
-                      //     crossAxisAlignment: CrossAxisAlignment.start,
-                      //     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      //     children: [
-
-                      //     ],
-                      //   ),
-                      // ),
                     ],
                   ),
                 ),
