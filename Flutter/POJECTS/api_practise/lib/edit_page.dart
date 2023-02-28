@@ -170,75 +170,79 @@ class _EditPageState extends State<EditPage> {
                 Container(
                   margin: EdgeInsets.only(top: 150),
                   child: TextButton(
-                    onPressed: () => showDialog(
-                      context: context,
-                      builder: (BuildContext context) => AlertDialog(
-                        content: const Text('Confirmation'),
-                        title: Column(
-                          // crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Confirm Changes??",
-                            ),
-                          ],
+                    onPressed: () =>
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) =>
+                              AlertDialog(
+                                content: const Text('Confirmation'),
+                                title: Column(
+                                  // crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "Confirm Changes??",
+                                    ),
+                                  ],
+                                ),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: const Text('Cancel'),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {
+                                      if (_formKey.currentState!.validate()) {
+                                        map["name"] =
+                                            nameController.text.toString();
+                                        map["picture"] =
+                                            imageController.text.toString();
+                                        map["email"] =
+                                            emailController.text.toString();
+                                        map["city"] =
+                                            cityController.text.toString();
+                                        map["phoneNumber"] =
+                                            phoneNumberController.text
+                                                .toString();
+                                        map["pincode"] =
+                                            pincodeController.text.toString();
+                                        if (widget.userModel == null) {
+                                          addInApi(map);
+                                          Navigator.of(context)
+                                            ..pop()..pop()
+                                            ..pushReplacement(
+                                              MaterialPageRoute<void>(
+                                                builder: (
+                                                    BuildContext context) =>
+                                                    GetAll(
+                                                    ),
+                                              ),
+                                            );
+                                        } else {
+                                          updateInApi(
+                                            map,
+                                            id: id.toString(),
+                                          );
+                                          Navigator.of(context)
+                                            ..pop()..pop()
+                                            ..pushReplacement(
+                                              MaterialPageRoute<void>(
+                                                builder: (
+                                                    BuildContext context) =>
+                                                    DetailsPage(
+                                                      map: map,
+                                                    ),
+                                              ),
+                                            );
+                                        }
+                                      }
+                                    },
+                                    child: const Text('OK'),
+                                  ),
+                                ],
+                              ),
                         ),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: const Text('Cancel'),
-                          ),
-                          TextButton(
-                            onPressed: () {
-                              if (_formKey.currentState!.validate()) {
-                                map["name"] = nameController.text.toString();
-                                map["picture"] =
-                                    imageController.text.toString();
-                                map["email"] = emailController.text.toString();
-                                map["city"] = cityController.text.toString();
-                                map["phoneNumber"] =
-                                    phoneNumberController.text.toString();
-                                map["pincode"] =
-                                    pincodeController.text.toString();
-                                if (widget.userModel == null) {
-                                  addInApi(map);
-                                  Navigator.of(context)
-                                    ..pop()
-                                    ..pop()
-                                    ..pushReplacement(
-                                      MaterialPageRoute<void>(
-                                        builder: (BuildContext context) =>
-                                            GetAll(
-                                            ),
-                                      ),
-                                    );
-
-                                } else {
-                                  updateInApi(
-                                    map,
-                                    id: id.toString(),
-                                  );
-                                  Navigator.of(context)
-                                    ..pop()
-                                    ..pop()
-                                    ..pushReplacement(
-                                      MaterialPageRoute<void>(
-                                        builder: (BuildContext context) =>
-                                            DetailsPage(
-                                              map: map,
-                                            ),
-                                      ),
-                                    );
-                                }
-
-                              }
-                            },
-                            child: const Text('OK'),
-                          ),
-                        ],
-                      ),
-                    ),
                     child: Text(
                       "Submit",
                       style: TextStyle(color: Colors.white),
