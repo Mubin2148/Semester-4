@@ -2,12 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
 class ScanQR extends StatefulWidget {
+  ScanQR({this.qrCodeResult});
+
+  dynamic qrCodeResult;
+
   @override
   _ScanQRState createState() => _ScanQRState();
 }
 
 class _ScanQRState extends State<ScanQR> {
-  String qrCodeResult = "Not Yet Scanned";
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +36,7 @@ class _ScanQRState extends State<ScanQR> {
               textAlign: TextAlign.center,
             ),
             Text(
-              qrCodeResult,
+              widget.qrCodeResult,
               style: TextStyle(
                 fontSize: 20.0,
               ),
@@ -38,28 +46,28 @@ class _ScanQRState extends State<ScanQR> {
               height: 20.0,
             ),
 
-            //Button to scan QR code
-            FloatingActionButton(
-              onPressed: () async {
-                String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-                    "#ff6666",
-                    "Cancel",
-                    false,
-                    ScanMode.DEFAULT); //barcode scanner
-                setState(() {
-                  qrCodeResult = barcodeScanRes;
-                });
-              },
-              //Button having rounded rectangle border
-              shape: RoundedRectangleBorder(
-                side: BorderSide(color: Colors.indigo.shade900),
-                borderRadius: BorderRadius.circular(20.0),
-              ),
-              child: Text(
-                "Open Scanner",
-                style: TextStyle(color: Colors.indigo.shade900),
-              ),
-            ),
+            // Button to scan QR code
+            // FloatingActionButton(
+            //   onPressed: () async {
+            //     String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+            //         "#ff6666",
+            //         "Cancel",
+            //         false,
+            //         ScanMode.DEFAULT); //barcode scanner
+            //     setState(() {
+            //       qrCodeResult = barcodeScanRes;
+            //     });
+            //   },
+            //   //Button having rounded rectangle border
+            //   shape: RoundedRectangleBorder(
+            //     side: BorderSide(color: Colors.indigo.shade900),
+            //     borderRadius: BorderRadius.circular(20.0),
+            //   ),
+            //   child: Text(
+            //     "Open Scanner",
+            //     style: TextStyle(color: Colors.indigo.shade900),
+            //   ),
+            // ),
           ],
         ),
       ),
