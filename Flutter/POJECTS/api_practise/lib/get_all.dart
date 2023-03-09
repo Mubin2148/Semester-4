@@ -21,7 +21,7 @@ class _GetAllState extends State<GetAll> {
 
   List<Widget> getList(lst) {
     List<Widget> list = [];
-    for (int i = 0; i < lst.length; i++) {
+    for (int i = 0; i < lst.length; ) {
       list.add(Card(
           elevation: 7,
           child: InkWell(

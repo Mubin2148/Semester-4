@@ -39,6 +39,7 @@ class MatrimonyDatabase {
     Database db = await initDatabase();
     List<Map<String, Object?>> data =
         await db.rawQuery("SELECT * FROM UsersList");
+    print(data.toString());
     for (int i = 0; i < data.length; i++) {
       NewUserModel model = NewUserModel();
       model.UserID = data[i]['UserID'] as int;

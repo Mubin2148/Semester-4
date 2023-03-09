@@ -78,8 +78,8 @@ class _DetailsPageState extends State<DetailsPage> {
                                   onPressed: () {
                                     Navigator.of(context)
                                         .push(MaterialPageRoute(
-                                      builder: (context) => EditPage(
-                                          userModel: widget.map),
+                                      builder: (context) =>
+                                          EditPage(userModel: widget.map),
                                     ));
                                   },
                                   child: Text(
@@ -193,7 +193,6 @@ class _DetailsPageState extends State<DetailsPage> {
                                     fontSize: 20, decorationThickness: 10),
                               ),
                             )
-
                           ],
                         ),
                       )
