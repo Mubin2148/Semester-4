@@ -1,17 +1,21 @@
-import 'dart:io';
+import 'package:demo_project/HomePage.dart';
+import 'package:flutter/material.dart';
 
-import 'user.dart';
-
-void main(List<String> args) {
-  User user = User();
-  // user.getUserDetail();
-  // user.getUserDetail();
-  // user.getUserDetail();
-  user.displayUserDetail();
-  // user.searchUser(stdin.readLineSync(), callback: (i) {
-  //   print('DATA FOUND AT INDEX : $i');
-  // });
-  user.deleteUser(stdin.readLineSync(), callback: (i) {
-    print('DATA DELETED AT INDEX : $i');
-  });
+void main() {
+  runApp(const MyApp());
 }
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "Flutter Demo",
+      home: LaptopPage(),
+    );
+  }
+}
+
